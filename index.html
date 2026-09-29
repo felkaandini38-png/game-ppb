@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDROID DEVELOPER CHALLENGE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- VIEW: TERKUNCI (Jika sudah pernah mengerjakan) -->
+    <div id="locked-view" class="view hidden">
+        <div class="card locked-card">
+            <div class="icon">🔒</div>
+            <h2>UJIAN SUDAH SELESAI</h2>
+            <p>Perangkat ini sudah digunakan untuk mengerjakan ujian.</p>
+            <p class="note">Hubungi guru jika Anda merasa ini adalah kesalahan.</p>
+        </div>
+    </div>
+
+    <!-- VIEW: HALAMAN PEMBUKA -->
+    <div id="landing-view" class="view">
+        <div class="header-decoration">
+            <span>📱</span><span>🤖</span><span>💻</span><span>⌨️</span>
+        </div>
+        <h1>ANDROID DEVELOPER CHALLENGE</h1>
+        <h3>Uji kemampuanmu menjadi Android Developer!</h3>
+        <p class="subtitle">SMK Rekayasa Perangkat Lunak (RPL)</p>
+
+        <div class="info-box">
+            <p>⏱️ Waktu: 45 menit</p>
+            <p>📝 Jumlah soal: 25 Pilihan Ganda (A-E)</p>
+            <p>📱 Bisa dikerjakan melalui HP</p>
+            <p>❤️ Kesempatan: 3 Nyawa</p>
+        </div>
+
+        <form id="start-form">
+            <input type="text" id="input-nama" placeholder="Nama Lengkap" required>
+            <input type="text" id="input-kelas" placeholder="Kelas" required>
+            <input type="text" id="input-kode" placeholder="Kode Peserta" required>
+            <button type="submit" class="btn-primary">🚀 MULAI CHALLENGE</button>
+        </form>
+    </div>
+
+    <!-- VIEW: HALAMAN UJIAN -->
+    <div id="exam-view" class="view hidden">
+        <header class="exam-header">
+            <div class="timer-box" id="timer-display">⏱️ 45:00</div>
+            <div class="stats-box">
+                <span id="lives-display">❤️ ❤️ ❤️</span>
+                <span id="xp-display">⭐ XP: 0</span>
+            </div>
+        </header>
+
+        <div class="progress-container">
+            <div class="level-badge" id="level-badge">LEVEL 1 / 5</div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progress-bar"></div>
+            </div>
+            <div class="question-counter">Soal <span id="current-q-num">1</span> / 25</div>
+        </div>
+
+        <main class="question-card">
+            <h3 id="question-text">Loading soal...</h3>
+            <div id="options-container" class="options-grid">
+                <!-- Opsi jawaban akan di-generate oleh JS -->
+            </div>
+        </main>
+
+        <div class="exam-footer">
+            <p id="warning-msg" class="warning hidden">⚠️ Pilih salah satu jawaban terlebih dahulu.</p>
+            <button id="btn-next" class="btn-primary hidden">LANJUTKAN ➜</button>
+        </div>
+    </div>
+
+    <!-- MODAL: LEVEL UP -->
+    <div id="levelup-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="icon">🎉</div>
+            <h2>LEVEL COMPLETE!</h2>
+            <p>Selamat! Kamu berhasil membuka level berikutnya.</p>
+            <button id="btn-continue-level" class="btn-primary">LANJUTKAN PETUALANGAN</button>
+        </div>
+    </div>
+
+    <!-- VIEW: HASIL UJIAN -->
+    <div id="result-view" class="view hidden">
+        <div class="card result-card" id="print-area">
+            <div class="print-header">
+                <h2>🎉 CHALLENGE COMPLETED!</h2>
+                <p>ANDROID DEVELOPER CHALLENGE</p>
+            </div>
+            
+            <div class="result-details">
+                <p><strong>Nama:</strong> <span id="res-nama"></span></p>
+                <p><strong>Kelas:</strong> <span id="res-kelas"></span></p>
+                <p><strong>Kode Peserta:</strong> <span id="res-kode"></span></p>
+                <p><strong>Tanggal:</strong> <span id="res-tanggal"></span></p>
+                <hr>
+                <p><strong>Nilai Akhir:</strong> <span id="res-score" class="highlight-score">0</span> / 100</p>
+                <p><strong>Jawaban Benar:</strong> <span id="res-correct">0</span> / 25</p>
+                <p><strong>Jawaban Salah:</strong> <span id="res-wrong">0</span> / 25</p>
+                <p><strong>Total XP:</strong> <span id="res-xp">0</span></p>
+                <p><strong>Waktu Pengerjaan:</strong> <span id="res-time">00:00</span></p>
+                <hr>
+                <div class="badge-container">
+                    <div class="icon" id="res-badge-icon">🏆</div>
+                    <h3 id="res-badge-text">ANDROID MASTER</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons no-print">
+            <button onclick="window.print()" class="btn-secondary">📄 CETAK HASIL</button>
+            <button onclick="alert('Ujian telah selesai. Silakan tutup halaman ini.')" class="btn-primary">🔄 SELESAI</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
